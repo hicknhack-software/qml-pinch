@@ -16,37 +16,6 @@ Window {
         interactive: false
         maximumFlickVelocity: 6000
 
-//        PinchArea {
-//            width: Math.max(contentWidth, flick.width)
-//            height: Math.max(contentHeight, flick.height)
-
-////            pinch {
-////                target: flick.contentItem
-////                minimumScale: 0.001
-////                maximumScale: 10000
-////                dragAxis: Pinch.XAndYAxis
-////            }
-
-//            property real initialWidth
-//            property real initialHeight
-//            onPinchStarted: {
-//                initialWidth = flick.contentWidth
-//                initialHeight = flick.contentHeight
-//                flick.interactive = false;
-//            }
-
-//            onPinchUpdated: {
-//                flick.contentX += pinch.previousCenter.x - pinch.center.x
-//                flick.contentY += pinch.previousCenter.y - pinch.center.y
-//                flick.resizeContent(initialWidth * pinch.scale, initialHeight * pinch.scale, pinch.center)
-//            }
-
-//            onPinchFinished: {
-//                flick.returnToBounds()
-//                flick.interactive = true;
-//            }
-//        }
-
         Rectangle {
             id: flickContent
             anchors.fill: parent
@@ -54,7 +23,6 @@ Window {
             Image {
                 anchors.fill: parent
                 source: "qt-logo.jpg"
-                //fillMode: Image.Tile
                 MouseArea {
                     anchors.fill: parent
                     onDoubleClicked: {
@@ -97,8 +65,6 @@ Window {
             var velocity = pinch.cumulativeVelocity();
             var msecFactor = (1 - Math.min(100, pinch.msecsSinceVelocityUpdate()) / 100) * 0.66;
             flick.flick(velocity.x * msecFactor, velocity.y * msecFactor);
-            //flick.returnToBounds();
-            //flick.interactive = true;
         }
     }
 }
